@@ -1,0 +1,189 @@
+.recently-viewed{
+
+    max-width:1320px;
+
+    margin:100px auto;
+
+    padding:0 40px;
+}
+
+.recently-header{
+
+    margin-bottom:40px;
+
+    text-align:center;
+}
+
+.recently-header h2{
+
+    font-size:40px;
+
+    color:#2D211C;
+
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.recently-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+}
+
+.recent-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.recent-card:hover{
+
+    transform:translateY(-8px);
+}
+
+.recent-image{
+
+    height:300px;
+
+    background:#FAF7F5;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.recent-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+.recent-content{
+
+    padding:22px;
+}
+
+.recent-content h3{
+
+    font-size:18px;
+
+    color:#2D211C;
+
+    margin-bottom:10px;
+}
+
+.recent-content p{
+
+    color:#E46A53;
+
+    font-weight:600;
+
+    font-size:18px;
+}
+
+@media(max-width:992px){
+
+.recently-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:576px){
+.recently-viewed{
+    padding:0 20px;
+    margin:80px auto;
+}
+.recently-grid{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+.recently-header h2{
+font-size:30px;
+margin-bottom:30px;
+}
+.recent-card{
+    display:flex;
+    flex-direction:column;
+}
+.recent-image{
+    height:200px;
+}
+.recent-content{
+    padding:14px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+.recent-content h3{
+    font-size:16px;
+    margin:8px 0;
+    line-height:1.3;
+}
+.recent-content p{
+    font-size:16px;
+    margin-top:auto;
+}
+}
+@media(max-width:430px){
+.recently-viewed{
+    margin:60px auto;
+    padding:0 16px;
+}
+.recently-header h2{
+    font-size:28px;
+    margin-bottom:24px;
+}
+.recent-image{
+    height:180px;
+}
+.recent-content{
+    padding:12px;
+}
+.recent-content h3{
+    font-size:15px;
+}
+.recent-content p{
+    font-size:15px;
+}
+}
+@media(max-width:390px){
+.recently-viewed{
+    padding:0 12px;
+}
+.recently-grid{
+    gap:10px;
+}
+.recent-image{
+    height:160px;
+}
+.recent-content{
+    padding:10px;
+}
+.recent-content h3{
+    font-size:14px;
+}
+.recent-content p{
+    font-size:14px;
+}
+}

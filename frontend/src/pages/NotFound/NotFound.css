@@ -1,0 +1,140 @@
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F8F4EF;
+  padding: 40px 20px;
+}
+
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  padding: 60px 40px;
+}
+
+.notfound-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 32px;
+  color: #E46A53;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(228, 106, 83, 0.15);
+}
+
+.notfound-404 {
+  margin: 0 0 8px 0;
+  font-size: 120px;
+  font-weight: 700;
+  color: #E46A53;
+  line-height: 1;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.notfound-subtitle {
+  margin: 0 0 16px 0;
+  font-size: 32px;
+  font-weight: 400;
+  color: #2B1E1A;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.3;
+}
+
+.notfound-description {
+  margin: 0 0 40px 0;
+  font-size: 16px;
+  color: #7A655D;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.notfound-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.notfound-button {
+  border-radius: 30px;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.notfound-button.primary {
+  background: #E46A53;
+  color: white;
+  border: none;
+}
+
+.notfound-button.primary:hover {
+  background: #D05A43;
+}
+
+.notfound-button.outline {
+  background: transparent;
+  color: #2B1E1A;
+  border: 2px solid #ECE6E2;
+}
+
+.notfound-button.outline:hover {
+  border-color: #E46A53;
+  color: #E46A53;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .notfound-container {
+    padding: 40px 24px;
+  }
+
+  .notfound-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .notfound-icon svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .notfound-404 {
+    font-size: 80px;
+  }
+
+  .notfound-subtitle {
+    font-size: 24px;
+  }
+
+  .notfound-description {
+    font-size: 14px;
+  }
+
+  .notfound-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .notfound-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .notfound-404 {
+    font-size: 64px;
+  }
+
+  .notfound-subtitle {
+    font-size: 20px;
+  }
+}

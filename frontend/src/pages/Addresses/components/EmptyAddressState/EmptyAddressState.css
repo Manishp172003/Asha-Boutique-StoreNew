@@ -1,0 +1,26 @@
+.empty-address-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.empty-address-state__icon {
+  margin-bottom: 1.5rem;
+}
+
+.empty-address-state__title {
+  font-family: serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin-bottom: 0.5rem;
+}
+
+.empty-address-state__subtitle {
+  font-size: 1rem;
+  color: #7A655D;
+  margin: 0;
+}

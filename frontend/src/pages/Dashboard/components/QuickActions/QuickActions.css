@@ -1,0 +1,52 @@
+.quick-actions-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.quick-actions-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: #2d1f1a;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E9E3DD;
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.quick-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #E9E3DD;
+  border-radius: 12px;
+  background: white;
+  color: #2d1f1a;
+  transition: all 0.3s ease;
+}
+
+.quick-action-btn:hover {
+  background: #F8F4EF;
+  border-color: #E46A53;
+  color: #E46A53;
+}
+
+@media (max-width: 768px) {
+  .quick-actions-card {
+    padding: 24px;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+}

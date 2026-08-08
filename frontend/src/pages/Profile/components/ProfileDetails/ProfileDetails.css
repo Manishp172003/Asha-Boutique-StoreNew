@@ -1,0 +1,86 @@
+﻿.profile-details-card{
+    background:#fff;
+    border-radius:28px;
+    padding:42px;
+    box-shadow:0 10px 35px rgba(0,0,0,.05);
+}
+
+.card-header{
+    margin-bottom:36px;
+}
+
+.card-header h2{
+    font-family:"Playfair Display",serif;
+    font-size:34px;
+    color:#2D211C;
+    margin-bottom:8px;
+}
+
+.card-header p{
+    color:#8A7A72;
+    font-size:15px;
+}
+
+.profile-details-form{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-size:14px;
+    margin-bottom:10px;
+    color:#6D5F58;
+    font-weight:500;
+}
+
+.form-group input{
+    height:56px;
+    padding:0 18px;
+    border:1px solid #E5DDD7;
+    border-radius:14px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.form-group input:focus{
+    outline:none;
+    border-color:#E46A53;
+}
+
+.profile-actions{
+    margin-top:36px;
+}
+
+.save-btn{
+    padding:14px 34px;
+    border:none;
+    border-radius:999px;
+    background:#E46A53;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.save-btn:hover{
+    background:#B45F46;
+}
+
+@media(max-width:768px){
+
+.profile-details-form{
+    grid-template-columns:1fr;
+}
+
+.profile-details-card{
+    padding:28px;
+}
+
+}
+

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 23% 95%;
+    --foreground: 15 24% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 15 24% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 15 24% 14%;
+    --primary: 15 24% 14%;
+    --primary-foreground: 30 23% 95%;
+    --secondary: 28 16% 90%;
+    --secondary-foreground: 15 24% 14%;
+    --muted: 28 16% 90%;
+    --muted-foreground: 18 13% 42%;
+    --accent: 9 72% 61%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 28 16% 85%;
+    --input: 28 16% 85%;
+    --ring: 9 72% 61%;
+    --radius: 1.375rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-[#F6F2EE] text-[#2B1E1A] font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Typography */
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F2EE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E9E3DD;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ccc4;
+}
+
+/* Selection */
+::selection {
+  background: rgba(228, 106, 83, 0.3);
+  color: #2B1E1A;
+}
+
+/* Focus */
+*:focus-visible {
+  outline: 2px solid rgba(228, 106, 83, 0.5);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  /* Enforce touch target size for buttons & interactive elements on mobile */
+  button,
+  [role="button"]:not(.product-card):not(.trending-card):not(.recent-card):not(.related-card),
+  select,
+  .quantity-btn,
+  .pagination-link,
+  .clear-filter,
+  .admin-table__action-btn,
+  .appointment-action-btn,
+  .wishlist-btn,
+  .wishlist-heart {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

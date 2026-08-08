@@ -1,0 +1,405 @@
+﻿.admin-login-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #F9F7F5;
+  color: #2D211C;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Left Side - Form */
+.admin-login-left {
+  flex: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  background: #F9F7F5;
+}
+
+.admin-login-form-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-login-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.admin-login-brand .brand-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #2D211C;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.admin-login-brand .brand-subtitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7B6D67;
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+.admin-login-header {
+  margin-bottom: 35px;
+}
+
+.admin-login-header h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #2D211C;
+  margin-bottom: 10px;
+}
+
+.admin-login-header p {
+  font-size: 14px;
+  color: #7B6D67;
+  line-height: 1.5;
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D211C;
+}
+
+.admin-form-group .label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-password-link {
+  font-size: 12px;
+  color: #E46A53;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+  transition: text-decoration 0.2s;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #7B6D67;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.admin-form-options {
+  margin-top: 2px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #7B6D67;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #E9E3DD;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-login-btn {
+  margin-top: 10px;
+  height: 52px;
+  background: #E46A53 !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  font-size: 15px !important;
+  transition: background-color 0.25s, transform 0.2s !important;
+  box-shadow: 0 10px 25px rgba(199, 112, 87, 0.2);
+}
+
+.admin-login-btn:hover {
+  background: #2D211C !important;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(45, 33, 28, 0.25);
+}
+
+.admin-login-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.admin-login-footer p {
+  font-size: 12px;
+  color: #7B6D67;
+}
+
+.admin-login-footer .report-btn {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2D211C;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.admin-login-footer .report-btn:hover {
+  color: #E46A53;
+}
+
+/* Right Side - Image Background and Glass Cards */
+.admin-login-right {
+  flex: 1;
+  background: url('/images/atelier_tailoring.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.admin-login-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(45, 33, 28, 0.15) 0%, rgba(45, 33, 28, 0.45) 100%);
+  z-index: 1;
+}
+
+.spotlight-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px;
+}
+
+/* Floating Mockup Card */
+.mockup-login-card {
+  width: 100%;
+  max-width: 290px;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0.95;
+  transform: translateY(-20px);
+}
+
+.mockup-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mockup-brand {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2D211C;
+}
+
+.mockup-title {
+  font-size: 12px;
+  color: #7B6D67;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.mockup-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mockup-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mockup-placeholder-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #7B6D67;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mockup-placeholder-input {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(233, 227, 221, 0.8);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #2D211C;
+}
+
+.mockup-card-btn {
+  background: #2D211C;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* Spotlight glassmorphism card */
+.spotlight-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(45, 33, 28, 0.15);
+  width: 100%;
+  max-width: 460px;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.spotlight-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #E46A53;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.spotlight-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #2D211C;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.spotlight-card p {
+  font-size: 13px;
+  color: #4A3F3A;
+  line-height: 1.6;
+}
+
+/* ---------- Responsive Layout ---------- */
+
+@media(max-width: 1024px) {
+  .admin-login-page {
+    flex-direction: column;
+  }
+  
+  .admin-login-left {
+    flex: none;
+    width: 100%;
+    padding: 60px 20px;
+  }
+  
+  .admin-login-right {
+    display: none; /* Hide background & spotlight on mobile/tablet to focus on form */
+  }
+  
+  .admin-login-form-container {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}
+
+@media(max-width: 480px) {
+  .admin-login-left {
+    padding: 40px 16px;
+  }
+  
+  .admin-login-brand {
+    margin-bottom: 30px;
+  }
+  
+  .admin-login-brand .brand-title {
+    font-size: 28px;
+  }
+  
+  .admin-login-header {
+    margin-bottom: 25px;
+  }
+  
+  .admin-login-header h2 {
+    font-size: 30px;
+  }
+  
+  .admin-login-form {
+    gap: 18px;
+  }
+  
+  .admin-login-btn {
+    height: 48px;
+    font-size: 14px !important;
+  }
+  
+  .admin-login-footer {
+    margin-top: 30px;
+  }
+}
+

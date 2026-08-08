@@ -1,0 +1,102 @@
+.delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.delete-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 450px;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.delete-modal__icon {
+  margin-bottom: 1rem;
+}
+
+.delete-modal__title {
+  font-family: serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0 0 0.75rem 0;
+}
+
+.delete-modal__message {
+  font-size: 0.875rem;
+  color: #7A655D;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.delete-modal__address-preview {
+  background: #F6F2EE;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.delete-modal__address-preview strong {
+  display: block;
+  font-size: 0.875rem;
+  color: #2B1E1A;
+  margin-bottom: 0.25rem;
+}
+
+.delete-modal__address-preview p {
+  font-size: 0.875rem;
+  color: #7A655D;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.delete-modal__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.delete-modal__button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.delete-modal__button--cancel {
+  background: white;
+  border: 1px solid #E9E3DD;
+  color: #2B1E1A;
+}
+
+.delete-modal__button--delete {
+  background: #E46A53;
+  color: white;
+  border: none;
+}
+
+.delete-modal__button--delete:hover {
+  background: #d55a43;
+}
+
+@media (max-width: 768px) {
+  .delete-modal {
+    padding: 1.5rem;
+  }
+  
+  .delete-modal__actions {
+    flex-direction: column;
+  }
+  
+  .delete-modal__button {
+    width: 100%;
+  }
+}

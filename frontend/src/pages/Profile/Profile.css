@@ -1,0 +1,33 @@
+.profile-page{
+    background:#F8F4EF;
+    padding:60px 0 90px;
+    min-height:100vh;
+}
+
+.profile-container{
+    width:min(1280px,92%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:270px 1fr;
+    gap:42px;
+
+    align-items:start;
+}
+
+.profile-content{
+
+    display:flex;
+    flex-direction:column;
+    gap:36px;
+}
+
+@media(max-width:992px){
+
+.profile-container{
+
+grid-template-columns:1fr;
+
+}
+
+}

@@ -1,0 +1,98 @@
+/* Whole Page */
+
+.register-page{
+    min-height:100vh;
+    background:#F6F2EE;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+    padding:50px;
+}
+
+/* Left Side */
+
+.register-left{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.register-image{
+    width:100%;
+    max-width:620px;
+    height:760px;
+    object-fit:cover;
+
+    border-radius:30px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+}
+
+/* Right Side */
+
+.register-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.register-card{
+
+    width:500px;
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:60px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+.register-card h1{
+
+    font-size:48px;
+
+    color:#2D211C;
+
+    margin-bottom:12px;
+
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.register-card p{
+
+    color:#7B6D67;
+
+    font-size:18px;
+
+    margin-bottom:45px;
+
+    line-height:1.6;
+}
+
+/* Form */
+
+.register-form{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    font-size:14px;
+    font-weight:500;
+    color:#2D211C;
+}
+
+.form-group input{
+    height:52px;
+    font-size:16px;
+}

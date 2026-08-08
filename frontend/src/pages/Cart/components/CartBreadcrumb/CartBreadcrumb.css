@@ -1,0 +1,33 @@
+﻿.cart-breadcrumb {
+    max-width: 1320px;
+    margin: 50px auto 35px;
+    padding: 0 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+}
+
+.breadcrumb-link {
+    color: #9b9088;
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #E46A53;
+}
+
+.separator {
+    color: #cfc5bf;
+    font-size: 13px;
+}
+
+.current-page {
+    color: #2d211c;
+    font-weight: 600;
+}
+

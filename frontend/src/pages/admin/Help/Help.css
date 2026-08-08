@@ -1,0 +1,221 @@
+.admin-page {
+  min-height: 100vh;
+  background-color: #F6F2EE;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-main {
+  padding: 2rem 4rem 5rem 20rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.help-main-content {
+  grid-column: span 8;
+}
+
+.help-sidebar {
+  grid-column: span 4;
+}
+
+/* Cards styling */
+.help-card {
+  background-color: white;
+  padding: 2.25rem;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid #E9E3DD;
+  margin-bottom: 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.help-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.help-card__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0 0 0.5rem 0;
+}
+
+.help-card__subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #7a6a63;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+/* Accordion FAQs */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border: 1px solid #E9E3DD;
+  border-radius: 16px;
+  background-color: #FDFCFB;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item--active {
+  border-color: #E46A53;
+  background-color: white;
+  box-shadow: 0 4px 16px rgba(228, 106, 83, 0.04);
+}
+
+.faq-item__trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.faq-item__question {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.faq-item--active .faq-item__question {
+  color: #E46A53;
+}
+
+.faq-item__icon {
+  color: #7a6a63;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.faq-item--active .faq-item__icon {
+  transform: rotate(180deg);
+  color: #E46A53;
+}
+
+.faq-item__content {
+  padding: 0 1.5rem 1.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #5C4B44;
+}
+
+/* Support Contacts */
+.support-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 18px;
+  background-color: #F8F4EF;
+  border: 1px solid #E9E3DD;
+  margin-bottom: 1rem;
+}
+
+.support-item__icon {
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 12px;
+  color: #E46A53;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.support-item__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0 0 0.25rem 0;
+}
+
+.support-item__desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.825rem;
+  color: #7a6a63;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.support-item__link {
+  color: #E46A53;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.support-item__link:hover {
+  color: #d55a43;
+  text-decoration: underline;
+}
+
+/* System workflows guide */
+.guide-step {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.guide-step::before {
+  content: '';
+  position: absolute;
+  left: 0.375rem;
+  top: 0.5rem;
+  bottom: -1.5rem;
+  width: 2px;
+  background-color: #E9E3DD;
+}
+
+.guide-step:last-child::before {
+  display: none;
+}
+
+.guide-step__bullet {
+  position: absolute;
+  left: 0;
+  top: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #E46A53;
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px #E9E3DD;
+}
+
+.guide-step__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0 0 0.25rem 0;
+}
+
+.guide-step__desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.825rem;
+  color: #7a6a63;
+  margin: 0;
+  line-height: 1.5;
+}

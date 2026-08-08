@@ -1,0 +1,223 @@
+.shop-sidebar{
+
+    width:280px;
+
+    background:#fff;
+
+    border:1px solid #ECE6E2;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    position:sticky;
+    top:100px;
+}
+
+.sidebar-section{
+
+    margin-bottom:35px;
+}
+
+.sidebar-section h3{
+
+    font-size:20px;
+
+    color:#2D211C;
+
+    margin-bottom:18px;
+
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Categories */
+
+.category-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+}
+
+.category-list li{
+
+    margin-bottom:10px;
+}
+
+.category-list button{
+
+    width:100%;
+
+    border:none;
+
+    background:none;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    padding:10px 14px;
+
+    border-radius:12px;
+
+    color:#6F645D;
+
+    transition:.3s;
+}
+
+.category-list button:hover{
+
+    background:#F6F2EE;
+}
+
+.category-list .active{
+
+    background:#E46A53;
+
+    color:white;
+}
+
+/* Price */
+
+.sidebar-section input{
+
+    width:100%;
+
+    accent-color:#E46A53;
+
+    margin-bottom:12px;
+}
+
+.price-text{
+
+    color:#7A6F69;
+
+    font-size:14px;
+}
+
+/* Colors */
+
+.color-options{
+
+    display:flex;
+
+    gap:12px;
+}
+
+.color{
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    border:2px solid white;
+
+    box-shadow:0 0 0 1px #ddd;
+
+    transition:.3s;
+}
+
+.color:hover{
+
+    transform:scale(1.1);
+}
+
+.brown{
+    background:#7A5747;
+}
+
+.gold{
+    background:#D9AE58;
+}
+
+.silver{
+    background:#C9C9C9;
+}
+
+.black{
+    background:#222;
+}
+
+/* Sizes */
+
+.size-options{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.size-options button{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:12px;
+
+    border:1px solid #E5DEDA;
+
+    background:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.size-options button:hover{
+
+    background:#E46A53;
+
+    color:white;
+
+    border-color:#E46A53;
+}
+
+/* Clear */
+
+.clear-filter{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#2D211C;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:500;
+
+    transition:.3s;
+}
+
+.clear-filter:hover{
+
+    background:#E46A53;
+}
+
+/* Mobile */
+
+@media(max-width:992px){
+
+.shop-sidebar{
+
+    width:100%;
+
+    position:static;
+}
+
+}

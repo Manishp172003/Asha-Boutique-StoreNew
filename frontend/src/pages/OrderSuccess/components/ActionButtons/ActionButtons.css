@@ -1,0 +1,40 @@
+﻿.order-actions{
+    padding-bottom:100px;
+    text-align:center;
+}
+
+.action-buttons{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:40px;
+}
+
+.support-text{
+    color:#8D817C;
+    font-size:15px;
+}
+
+.support-text a{
+    color:#E46A53;
+    text-decoration:none;
+}
+
+.support-text a:hover{
+    text-decoration:underline;
+}
+
+@media (max-width:768px){
+    .action-buttons{
+        flex-direction:column;
+        align-items:center;
+        gap:16px;
+    }
+
+    .support-text{
+        width:90%;
+        margin:auto;
+        line-height:1.7;
+    }
+}
+

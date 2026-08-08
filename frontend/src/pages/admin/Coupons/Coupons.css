@@ -1,0 +1,176 @@
+.coupons-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.coupons-header__title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0;
+}
+
+.coupons-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.coupons-stat-card {
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #E9E3DD;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+.coupons-stat-card__label {
+  font-size: 0.775rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7A655D;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.coupons-stat-card__value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #2B1E1A;
+  margin: 0;
+}
+
+.coupons-stat-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background-color: rgba(228, 106, 83, 0.08);
+  color: #E46A53;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupons-table-container {
+  background-color: white;
+  border-radius: 24px;
+  border: 1px solid #E9E3DD;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  margin-bottom: 2rem;
+}
+
+.coupons-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.coupons-table th {
+  background-color: #FDFCFB;
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7A655D;
+  border-bottom: 1px solid #E9E3DD;
+}
+
+.coupons-table td {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.875rem;
+  color: #2B1E1A;
+  border-bottom: 1px solid #F6F2EE;
+  vertical-align: middle;
+}
+
+.coupon-code-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.825rem;
+  font-weight: 600;
+  background-color: rgba(43, 30, 26, 0.05);
+  color: #2B1E1A;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  border: 1px dashed rgba(43, 30, 26, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.coupon-discount-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.coupon-discount-badge--percentage {
+  background-color: rgba(228, 106, 83, 0.08);
+  color: #E46A53;
+}
+
+.coupon-discount-badge--fixed {
+  background-color: rgba(92, 75, 68, 0.08);
+  color: #5C4B44;
+}
+
+.coupon-status-badge {
+  display: inline-block;
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.coupon-status-badge--active {
+  background-color: rgba(16, 185, 129, 0.08);
+  color: #10B981;
+}
+
+.coupon-status-badge--expired {
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #EF4444;
+}
+
+.coupon-delete-btn {
+  background: none;
+  border: none;
+  color: #7A655D;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.coupon-delete-btn:hover {
+  color: #EF4444;
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+/* Coupon Modal overrides */
+.coupon-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .coupon-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

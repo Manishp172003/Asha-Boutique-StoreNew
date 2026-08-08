@@ -1,0 +1,37 @@
+﻿.shop-breadcrumb {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #ece6e2;
+}
+
+.breadcrumb-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 15px;
+}
+
+.breadcrumb-home {
+  color: #8d8178;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-home:hover {
+  color: #E46A53;
+}
+
+.breadcrumb-separator {
+  color: #b8aaa2;
+}
+
+.breadcrumb-current {
+  color: #2d211c;
+  font-weight: 600;
+}
+

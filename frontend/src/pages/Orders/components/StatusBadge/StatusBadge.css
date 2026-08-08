@@ -1,0 +1,30 @@
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.confirmed,
+.status-badge.published,
+.status-badge.delivered {
+  background: rgba(34, 197, 94, 0.1) !important;
+  color: #22c55e !important;
+}
+
+.status-badge.cancelled,
+.status-badge.out-of-stock {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444 !important;
+}
+
+.status-badge.processing,
+.status-badge.pending,
+.status-badge.shipped,
+.status-badge.draft {
+  background: rgba(228, 106, 83, 0.1) !important;
+  color: #E46A53 !important;
+}

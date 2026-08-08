@@ -1,0 +1,120 @@
+.shop-hero {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.shop-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+}
+
+@keyframes slide-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.shop-hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  font-weight: 300;
+  color: #FDFCFB;
+  letter-spacing: 2px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  opacity: 0;
+  animation: slide-from-top 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.shop-hero-subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  color: #E9E3DD;
+  letter-spacing: 1px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  opacity: 0;
+  animation: fade-in 1.2s ease-out 0.3s forwards;
+}
+
+/* Breadcrumb Overlay Styles */
+.shop-hero-breadcrumb {
+  position: absolute;
+  top: 96px;
+  left: 40px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-breadcrumb-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.hero-breadcrumb-link:hover {
+  color: #fff;
+}
+
+.hero-breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-breadcrumb-current {
+  color: #fff;
+  font-weight: 600;
+}
+
+@media(max-width: 768px) {
+  .shop-hero {
+    height: 420px;
+  }
+  .shop-hero-breadcrumb {
+    top: 76px;
+    left: 20px;
+    font-size: 12px;
+  }
+}
+

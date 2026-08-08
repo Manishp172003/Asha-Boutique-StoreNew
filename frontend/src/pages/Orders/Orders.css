@@ -1,0 +1,67 @@
+﻿.orders-page{
+    background:#F7F3EF;
+    min-height:100vh;
+}
+
+.orders-empty-state{
+    max-width:1320px;
+    margin:50px auto 90px;
+    padding:0 20px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.empty-icon{
+    margin-bottom:32px;
+}
+
+.orders-empty-state h2{
+    font-family:"Playfair Display",serif;
+    font-size:48px;
+    color:#2D211C;
+    margin-bottom:16px;
+}
+
+.orders-empty-state p{
+    font-size:18px;
+    color:#7D6E67;
+    margin-bottom:32px;
+    max-width:500px;
+}
+
+.continue-shopping-btn{
+    padding:16px 32px;
+
+    background:#E46A53;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:background 0.3s ease;
+}
+
+.continue-shopping-btn:hover{
+    background:#D55A43;
+}
+
+@media(max-width:768px){
+    .orders-empty-state h2{
+        font-size:36px;
+    }
+
+    .orders-empty-state p{
+        font-size:16px;
+    }
+}
+

@@ -1,0 +1,139 @@
+﻿.address-card {
+  background: white;
+  border-radius: 22px;
+  padding: 1.5rem;
+  border: 1px solid #E9E3DD;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.address-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.address-card__default-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #E46A53;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.address-card__content {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.address-card__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F6F2EE;
+  border-radius: 50%;
+}
+
+.address-card__details {
+  flex: 1;
+}
+
+.address-card__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2B1E1A;
+  margin: 0 0 0.25rem 0;
+}
+
+.address-card__phone {
+  font-size: 0.875rem;
+  color: #7A655D;
+  margin: 0 0 0.5rem 0;
+}
+
+.address-card__address {
+  font-size: 0.875rem;
+  color: #7A655D;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.address-card__type {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #E46A53;
+  background: #F6F2EE;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.address-card__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.address-card__action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #E9E3DD;
+  background: white;
+  color: #2B1E1A;
+}
+
+.address-card__action:hover {
+  background: #F6F2EE;
+}
+
+.address-card__action--default {
+  color: #E46A53;
+  border-color: #E46A53;
+}
+
+.address-card__action--default:hover {
+  background: #E46A53;
+  color: white;
+}
+
+.address-card__action--edit {
+  color: #2B1E1A;
+}
+
+.address-card__action--delete {
+  color: #E46A53;
+  border-color: #E46A53;
+}
+
+.address-card__action--delete:hover {
+  background: #E46A53;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .address-card__actions {
+    flex-direction: column;
+  }
+  
+  .address-card__action {
+    justify-content: center;
+  }
+}
+

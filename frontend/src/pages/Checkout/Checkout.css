@@ -1,0 +1,71 @@
+﻿.checkout-page {
+  min-height: 100vh;
+  background: #F6F2EE;
+  padding: 60px 0 140px 0;
+}
+
+.checkout-header-section {
+  max-width: 1320px;
+  margin: 0 auto 32px auto;
+  padding: 0 40px;
+}
+
+.checkout-header-section h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #2D211C;
+  margin-bottom: 8px;
+}
+
+.checkout-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #7B6D67;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.checkout-breadcrumb .separator {
+  color: #D3C5BC;
+}
+
+.checkout-breadcrumb .active {
+  color: #E46A53;
+  font-weight: 600;
+}
+
+.checkout-container {
+  max-width: 1320px;
+  margin: auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 1024px) {
+  .checkout-container {
+    padding: 0 30px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-container {
+    padding: 0 16px;
+    gap: 24px;
+  }
+}
+

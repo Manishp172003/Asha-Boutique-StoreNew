@@ -1,0 +1,27 @@
+.addresses-page {
+  min-height: 100vh;
+  background: #F6F2EE;
+  padding-top: 80px;
+}
+
+.addresses-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+.addresses-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .addresses-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}

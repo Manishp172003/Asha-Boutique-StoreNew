@@ -1,0 +1,159 @@
+.cart-item{
+    display:grid;
+    grid-template-columns:2.5fr 1fr 1.2fr 1fr;
+    align-items:center;
+    padding:24px 0;
+    border-bottom:1px solid #E8DDD7;
+}
+
+.cart-product{
+
+    display:flex;
+
+    gap:24px;
+
+    align-items:flex-start;
+
+}
+
+.cart-product img{
+
+    width:110px;
+
+    height:140px;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+}
+
+.cart-details h3{
+    font-family:"Playfair Display",serif;
+    font-size:18px;
+    font-weight:600;
+    color:#2D211C;
+    margin-bottom:6px;
+}
+
+.cart-details p{
+
+    color:#6E625C;
+
+    margin-bottom:6px;
+
+    font-size:15px;
+
+}
+
+.remove-btn{
+
+    margin-top:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:#D25E49;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+.cart-price,
+.cart-subtotal{
+    font-size:18px;
+    font-weight:600;
+    color:#2D211C;
+    text-align: center;
+}
+
+.cart-quantity{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin: 0 auto;
+    width:110px;
+    height:40px;
+    border:1px solid #DCCEC6;
+    border-radius:999px;
+    gap:16px;
+}
+
+.cart-quantity button{
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:#2D211C;
+
+}
+
+.cart-quantity span{
+
+    font-size:18px;
+
+    font-weight:500;
+
+}
+
+@media(max-width:768px){
+.cart-item{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:24px 0;
+}
+.cart-product{
+    flex-direction:column;
+    gap:16px;
+}
+.cart-product img{
+    width:100%;
+    height:200px;
+}
+.cart-details h3{
+    font-size:28px;
+    margin-bottom:8px;
+}
+.cart-details p{
+    font-size:14px;
+}
+.remove-btn{
+    margin-top:12px;
+}
+.cart-price,
+.cart-subtotal{
+    font-size:18px;
+}
+.cart-quantity{
+    width:100%;
+    max-width:200px;
+}
+}
+
+@media(max-width:480px){
+.cart-product img{
+    height:160px;
+}
+.cart-details h3{
+    font-size:24px;
+}
+.cart-quantity{
+    max-width:180px;
+}
+}

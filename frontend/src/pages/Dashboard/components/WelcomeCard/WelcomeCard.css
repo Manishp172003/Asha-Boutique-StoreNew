@@ -1,0 +1,35 @@
+.welcome-card {
+  background: white;
+  border-radius: 22px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.welcome-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: #2d1f1a;
+  margin-bottom: 8px;
+}
+
+.welcome-content .tagline {
+  font-size: 1rem;
+  color: #7a6a63;
+  margin-bottom: 16px;
+}
+
+.welcome-content .date {
+  font-size: 0.875rem;
+  color: #9b8b84;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .welcome-card {
+    padding: 32px 24px;
+  }
+
+  .welcome-content h1 {
+    font-size: 2rem;
+  }
+}

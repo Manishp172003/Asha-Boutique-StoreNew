@@ -1,0 +1,235 @@
+.admin-page {
+  min-height: 100vh;
+  background-color: #F6F2EE;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-main {
+  padding: 2rem 4rem 5rem 20rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Orders Header */
+.admin-orders-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-orders-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.admin-filter-chip {
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: #7a6a63;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-filter-chip:hover {
+  background-color: rgba(228, 106, 83, 0.08);
+  color: #E46A53;
+}
+
+.admin-filter-chip--active {
+  background-color: #E46A53;
+  color: white;
+  box-shadow: 0 4px 12px rgba(228, 106, 83, 0.25);
+}
+
+.admin-orders-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Table */
+.admin-table-container {
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E9E3DD;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.admin-table thead {
+  background-color: #F8F4EF;
+  border-bottom: 1px solid #E9E3DD;
+}
+
+.admin-table th {
+  padding: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: #2B1E1A;
+  text-transform: uppercase;
+}
+
+.admin-table tbody {
+  border-top: 1px solid #E9E3DD;
+}
+
+.admin-table__row {
+  transition: background-color 0.3s ease;
+}
+
+.admin-table__row:hover {
+  background-color: #F8F4EF;
+}
+
+.admin-table td {
+  padding: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #7a6a63;
+  border-bottom: 1px solid #E9E3DD;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.admin-table__order-id {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: #2B1E1A;
+}
+
+.admin-table__total {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #2B1E1A;
+}
+
+/* Customer Cell */
+.customer-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.customer-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.bg-secondary-fixed {
+  background-color: rgba(254, 189, 160, 1);
+}
+
+.bg-primary-fixed {
+  background-color: rgba(244, 222, 218, 1);
+}
+
+.bg-tertiary-fixed {
+  background-color: rgba(244, 222, 214, 1);
+}
+
+.bg-surface-container-highest {
+  background-color: #e6e2de;
+}
+
+.text-on-secondary-fixed {
+  color: rgb(59, 9, 0);
+}
+
+.text-on-primary-fixed {
+  color: rgb(36, 25, 23);
+}
+
+.text-on-tertiary-fixed {
+  color: rgb(36, 25, 20);
+}
+
+.text-on-surface-container-highest {
+  color: rgba(78, 68, 67, 1);
+}
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-name {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: #2B1E1A;
+}
+
+.customer-email {
+  font-size: 0.75rem;
+  color: #7a6a63;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.admin-table__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.admin-table__action-btn {
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #7a6a63;
+  transition: all 0.3s ease;
+}
+
+.admin-table__action-btn:hover {
+  color: #E46A53;
+}
+
+.admin-table__action-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}

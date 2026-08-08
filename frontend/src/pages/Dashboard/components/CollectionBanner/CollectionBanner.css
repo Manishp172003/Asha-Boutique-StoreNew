@@ -1,0 +1,89 @@
+.collection-banner {
+  background: linear-gradient(135deg, #2d1f1a 0%, #3d2f2a 100%);
+  border-radius: 18px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.collection-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(228, 106, 83, 0.1) 0%, rgba(228, 106, 83, 0.05) 100%);
+  clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-text {
+  max-width: 500px;
+}
+
+.banner-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #E46A53;
+  background: rgba(228, 106, 83, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.banner-text h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.25rem;
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.banner-text p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.explore-btn {
+  background: white;
+  color: #2d1f1a;
+  border: none;
+}
+
+.explore-btn:hover {
+  background: #F8F4EF;
+  color: #2d1f1a;
+}
+
+@media (max-width: 768px) {
+  .collection-banner {
+    padding: 32px 24px;
+  }
+
+  .collection-banner::before {
+    width: 100%;
+    opacity: 0.5;
+  }
+
+  .banner-text {
+    max-width: 100%;
+  }
+
+  .banner-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .banner-text p {
+    font-size: 0.95rem;
+  }
+}

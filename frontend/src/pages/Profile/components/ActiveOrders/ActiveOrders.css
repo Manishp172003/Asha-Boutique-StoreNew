@@ -1,0 +1,212 @@
+﻿.active-orders-card{
+
+    background:#fff;
+    border-radius:22px;
+    padding:40px;
+    border:1px solid #E9E3DD;
+    box-shadow:0 4px 20px rgba(0,0,0,0.06);
+
+}
+
+.active-orders-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.active-orders-header h2{
+
+    font-family:"Playfair Display",serif;
+    font-size:34px;
+    color:#2D211C;
+
+}
+
+.active-orders-header p{
+
+    margin-top:8px;
+    color:#8B7D76;
+
+}
+
+.view-all-btn{
+
+    border:none;
+    background:#E46A53;
+    color:white;
+
+    padding:12px 26px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+}
+
+.active-order{
+
+    display:flex;
+
+    gap:28px;
+
+    align-items:center;
+
+}
+
+.order-image{
+
+    width:120px;
+    height:140px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:#F5F1EC;
+
+}
+
+.order-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+.order-content{
+
+    flex:1;
+
+}
+
+.order-content h3{
+
+    font-family:"Playfair Display",serif;
+    font-size:24px;
+    color:#2D211C;
+
+    margin-bottom:12px;
+
+}
+
+.order-id{
+
+    color:#7D6E66;
+
+    margin-bottom:10px;
+
+}
+
+.delivery{
+
+    color:#7D6E66;
+
+    margin-bottom:18px;
+
+}
+
+.delivery span{
+
+    color:#E46A53;
+    font-weight:600;
+
+}
+
+.status{
+
+    display:inline-flex;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.processing{
+
+    background:#FFF2DD;
+    color:#B87800;
+
+}
+
+@media(max-width:768px){
+
+.active-orders-header{
+
+flex-direction:column;
+align-items:flex-start;
+gap:20px;
+
+}
+
+.active-order{
+
+flex-direction:column;
+align-items:flex-start;
+
+}
+
+.order-image{
+
+width:100%;
+height:260px;
+
+}
+
+.view-all-btn{
+
+width:100%;
+
+}
+
+}
+
+.active-orders-card .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0 10px 0;
+  text-align: center;
+}
+
+.active-orders-card .empty-state h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  color: #2D211C;
+  margin-bottom: 6px;
+}
+
+.active-orders-card .empty-state p {
+  font-size: 0.9rem;
+  color: #8B7D76;
+  margin-bottom: 16px;
+}
+
+.active-orders-card .continue-shopping-btn {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: #E46A53;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+  transition: background 0.3s ease;
+}
+
+.active-orders-card .continue-shopping-btn:hover {
+  background: #d55a43;
+}
+
