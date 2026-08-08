@@ -2,6 +2,7 @@ package com.ashaboutique.service;
 
 import com.ashaboutique.dto.CartItemResponse;
 import com.ashaboutique.dto.CartResponse;
+import com.ashaboutique.dto.ProductResponse;
 import com.ashaboutique.model.Cart;
 import com.ashaboutique.model.CartItem;
 import com.ashaboutique.model.Product;
