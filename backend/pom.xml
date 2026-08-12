@@ -86,6 +86,13 @@
             <artifactId>google-api-client</artifactId>
             <version>2.2.0</version>
         </dependency>
+
+        <!-- Razorpay Java SDK -->
+        <dependency>
+            <groupId>com.razorpay</groupId>
+            <artifactId>razorpay-java</artifactId>
+            <version>1.4.3</version>
+        </dependency>
     </dependencies>
 
     <build>

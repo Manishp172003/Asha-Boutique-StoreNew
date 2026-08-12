@@ -1,7 +1,7 @@
 # Database Connection Settings
 spring.datasource.url=jdbc:mysql://localhost:3306/asha_boutique1?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
 spring.datasource.username=root
-spring.datasource.password=root@1234
+spring.datasource.password=YOUR_DATABASE_PASSWORD
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 # JPA / Hibernate settings
@@ -18,9 +18,16 @@ logging.level.org.hibernate.SQL=DEBUG
 server.port=8080
 
 # JWT Custom Properties
-app.jwt.secret=c2VjcmV0LWtleS1zaG91bGQtYmUtYXQtbGVhc3QtMjU2LWJpdHMtbG9uZy1hbmQtYmFzZTY0LWVuY29kZWQ=
+app.jwt.secret=YOUR_JWT_SECRET_KEY_AT_LEAST_256_BITS_BASE64_ENCODED
 app.jwt.expiration-ms=86400000
 
 # Multipart File Upload Properties
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=50MB
+
+# Razorpay Credentials (Sandbox/Test Mode)
+razorpay.key.id=YOUR_RAZORPAY_KEY_ID
+razorpay.key.secret=YOUR_RAZORPAY_KEY_SECRET
+
+# Demo UPI Configuration
+demo.upi.id=YOUR_UPI_VPA_ID

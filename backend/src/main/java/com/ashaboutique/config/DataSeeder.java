@@ -74,6 +74,15 @@ public class DataSeeder implements CommandLineRunner {
         } catch (Exception e) {
             System.err.println("Could not run startup database updates: " + e.getMessage());
         }
+
+        // Restore stock to standard levels for easy test demonstrations
+        try {
+            jdbcTemplate.execute("UPDATE products SET stock_quantity = 20 WHERE stock_quantity < 5");
+            System.out.println("Restored test stock levels for demo products successfully");
+        } catch (Exception e) {
+            System.err.println("Could not restore stock levels: " + e.getMessage());
+        }
+
         seedAdminUser();
         seedProducts();
         seedTestimonials();
@@ -87,7 +96,15 @@ public class DataSeeder implements CommandLineRunner {
                 jdbcTemplate.execute("INSERT INTO coupons (code, discount_type, discount_value, min_amount, active) VALUES ('ASHA10', 'PERCENTAGE', 10.0, 1000.0, 1)");
                 jdbcTemplate.execute("INSERT INTO coupons (code, discount_type, discount_value, min_amount, active) VALUES ('FESTIVE500', 'FIXED', 500.0, 3000.0, 1)");
                 jdbcTemplate.execute("INSERT INTO coupons (code, discount_type, discount_value, min_amount, active) VALUES ('WELCOME20', 'PERCENTAGE', 20.0, 1500.0, 1)");
+                jdbcTemplate.execute("INSERT INTO coupons (code, discount_type, discount_value, min_amount, active) VALUES ('WELCOME10', 'PERCENTAGE', 10.0, 500.0, 1)");
                 System.out.println("Seeded default coupons successfully");
+            } else {
+                // Ensure WELCOME10 exists even if other coupons were seeded
+                Integer welcome10Count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM coupons WHERE code = 'WELCOME10'", Integer.class);
+                if (welcome10Count == null || welcome10Count == 0) {
+                    jdbcTemplate.execute("INSERT INTO coupons (code, discount_type, discount_value, min_amount, active) VALUES ('WELCOME10', 'PERCENTAGE', 10.0, 500.0, 1)");
+                    System.out.println("Seeded WELCOME10 coupon successfully");
+                }
             }
         } catch (Exception e) {
             System.err.println("Could not seed coupons: " + e.getMessage());

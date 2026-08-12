@@ -192,74 +192,81 @@ const OrderDetails = () => {
 
           {/* Right Column: Address, Payment, Summary */}
           <div className="order-details-right">
+            {(() => {
+              const addressLines = order.shippingAddress ? order.shippingAddress.split(', ') : [];
+              const discount = order.discountAmount || 0;
+              const subtotal = (order.totalPrice || 0) + discount;
+              const total = order.totalPrice || 0;
+              
+              return (
+                <>
+                  <div className="shipping-card">
+                    <h3>Shipping Address</h3>
+                    {addressLines.length > 0 ? (
+                      <div className="address-content">
+                        {addressLines.map((line, idx) => (
+                          <p key={idx} className={idx === 0 ? "name" : ""}>{line}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="address-content">
+                        <p className="name">{user?.name || 'Guest User'}</p>
+                        <p className="no-info">No shipping details provided. Using default profile address.</p>
+                      </div>
+                    )}
+                  </div>
 
-            <div className="shipping-card">
-              <h3>Shipping Address</h3>
-              {order.shippingAddress && (order.shippingAddress.name || order.shippingAddress.address) ? (
-                <div className="address-content">
-                  <p className="name">{order.shippingAddress.name}</p>
-                  <p>{order.shippingAddress.address}</p>
-                  <p>
-                    {order.shippingAddress.city && `${order.shippingAddress.city}, `}
-                    {order.shippingAddress.state && `${order.shippingAddress.state} `}
-                    {order.shippingAddress.zip && `- ${order.shippingAddress.zip}`}
-                  </p>
-                  <p className="country">{order.shippingAddress.country}</p>
-                </div>
-              ) : order.shippingInfo && (order.shippingInfo.firstName || order.shippingInfo.address) ? (
-                <div className="address-content">
-                  <p className="name">{order.shippingInfo.firstName} {order.shippingInfo.lastName}</p>
-                  <p>{order.shippingInfo.address}</p>
-                  <p>
-                    {order.shippingInfo.city && `${order.shippingInfo.city}, `}
-                    {order.shippingInfo.state && `${order.shippingInfo.state} `}
-                    {order.shippingInfo.zipCode && `- ${order.shippingInfo.zipCode}`}
-                  </p>
-                  <p className="country">{order.shippingInfo.country}</p>
-                </div>
-              ) : (
-                <div className="address-content">
-                  <p className="name">{user?.name || 'Guest User'}</p>
-                  <p className="no-info">No shipping details provided. Using default profile address.</p>
-                </div>
-              )}
-            </div>
+                  <div className="payment-card">
+                    <h3>Payment Method</h3>
+                    <div className="payment-content">
+                      <p>
+                        {order.paymentId && order.paymentId.trim() !== "" && !order.paymentId.startsWith("COD") ? (
+                          order.paymentId.startsWith("pay_") || order.paymentId.startsWith("MOCK") ? (
+                            "Online Payment (Razorpay)"
+                          ) : (
+                            "Prepaid Online"
+                          )
+                        ) : (
+                          "Cash on Delivery (COD)"
+                        )}
+                      </p>
+                    </div>
+                  </div>
 
-            <div className="payment-card">
-              <h3>Payment Method</h3>
-              <div className="payment-content">
-                <p>
-                  {order.paymentMethod === 'cod' ? 'Cash on Delivery' : 
-                   order.paymentMethod === 'card' ? 'Credit/Debit Card' : 
-                   order.paymentMethod === 'upi' ? 'UPI' : order.paymentMethod}
-                </p>
-              </div>
-            </div>
-
-            <div className="order-summary-card">
-              <h3>Order Summary</h3>
-              <div className="summary-row">
-                <span>Subtotal</span>
-                <span>{formatPrice(order.totalPrice ?? order.totalAmount ?? order.total ?? 0)}</span>
-              </div>
-              <div className="summary-row">
-                <span>Shipping</span>
-                <span>Free</span>
-              </div>
-              <div className="summary-row total">
-                <strong>Total</strong>
-                <strong>{formatPrice(order.totalPrice ?? order.totalAmount ?? order.total ?? 0)}</strong>
-              </div>
-              <div className="order-actions">
-                <Button variant="primary" onClick={handleContinueShopping} className="action-btn-primary">
-                  Continue Shopping
-                </Button>
-                <Button variant="outline" onClick={handleBackToOrders} className="action-btn-outline">
-                  Back to Orders
-                </Button>
-              </div>
-            </div>
-
+                  <div className="order-summary-card">
+                    <h3>Order Summary</h3>
+                    <div className="summary-row">
+                      <span>Subtotal</span>
+                      <span>{formatPrice(subtotal)}</span>
+                    </div>
+                    {discount > 0 && (
+                      <div className="summary-row discount-row">
+                        <span>Discount {order.couponCode ? `(${order.couponCode})` : ""}</span>
+                        <span className="discount-value" style={{ color: '#E46A53', fontWeight: '500' }}>
+                          - {formatPrice(discount)}
+                        </span>
+                      </div>
+                    )}
+                    <div className="summary-row">
+                      <span>Shipping</span>
+                      <span>Free</span>
+                    </div>
+                    <div className="summary-row total">
+                      <strong>Total</strong>
+                      <strong>{formatPrice(total)}</strong>
+                    </div>
+                    <div className="order-actions">
+                      <Button variant="primary" onClick={handleContinueShopping} className="action-btn-primary">
+                        Continue Shopping
+                      </Button>
+                      <Button variant="outline" onClick={handleBackToOrders} className="action-btn-outline">
+                        Back to Orders
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
           </div>
 
         </div>

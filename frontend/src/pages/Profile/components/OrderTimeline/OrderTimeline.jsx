@@ -47,11 +47,29 @@ const OrderTimeline = () => {
   const generateTimeline = () => {
     if (!latestOrder) return [];
 
-    const statusOrder = ['confirmed', 'processing', 'shipped', 'out_for_delivery', 'delivered'];
-    const currentIndex = statusOrder.indexOf(latestOrder.status);
+    const getStatusWeight = (status) => {
+      switch (status?.toLowerCase()) {
+        case 'pending':
+        case 'confirmed':
+          return 1;
+        case 'processing':
+          return 2;
+        case 'shipped':
+          return 3;
+        case 'out_for_delivery':
+          return 4;
+        case 'delivered':
+          return 5;
+        default:
+          return 0;
+      }
+    };
+
+    const currentWeight = getStatusWeight(latestOrder.status);
 
     return timelineSteps.map((step, index) => {
-      const isCompleted = index <= currentIndex;
+      const stepWeight = index + 1;
+      const isCompleted = stepWeight <= currentWeight;
       const trackingStep = latestOrder.tracking?.find(t => t.status === step.status);
       
       return {

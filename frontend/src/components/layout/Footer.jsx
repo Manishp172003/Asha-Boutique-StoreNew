@@ -15,11 +15,19 @@ const Footer = () => {
 
   const handleSubscribe = async (e) => {
     e.preventDefault()
-    if (!email.trim()) return
+    const trimmedEmail = email.trim()
+    if (!trimmedEmail) return
+
+    // Strict email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(trimmedEmail)) {
+      toast.error('Please enter a valid email address.')
+      return
+    }
 
     setLoading(true)
     try {
-      await subscribeToNewsletter(email)
+      await subscribeToNewsletter(trimmedEmail)
       setEmail('')
       setModalOpen(true)
     } catch (err) {

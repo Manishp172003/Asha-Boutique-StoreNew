@@ -5,23 +5,29 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useApp } from "../../../../context/AppContext";
 import { useState, useEffect } from "react";
+import { MapPin } from "lucide-react";
 import "./CheckoutForm.css";
 
 const checkoutSchema = z.object({
-  firstName: z.string().trim().min(1, { message: "First name is required" }),
-  lastName: z.string().trim().min(1, { message: "Last name is required" }),
+  firstName: z.string().trim().min(2, { message: "First name must be at least 2 characters" }),
+  lastName: z.string().trim().min(2, { message: "Last name must be at least 2 characters" }),
   email: z.string().trim().email({ message: "Invalid email address" }).min(1, { message: "Email is required" }),
   phone: z
     .string()
     .trim()
-    .regex(/^[+]?[0-9]{10,15}$/, {
-      message: "Phone number must be between 10 and 15 digits (optional leading +)",
+    .regex(/^(?:\+91|0)?[6-9]\d{9}$/, {
+      message: "Phone number must be a valid 10-digit Indian number (optionally starting with +91 or 0)",
     }),
-  address: z.string().trim().min(1, { message: "Address is required" }),
-  city: z.string().trim().min(1, { message: "City is required" }),
-  state: z.string().trim().min(1, { message: "State is required" }),
-  zipCode: z.string().trim().min(1, { message: "ZIP code is required" }),
-  country: z.string().trim().min(1, { message: "Country is required" }),
+  address: z.string().trim().min(5, { message: "Address details must be at least 5 characters" }),
+  city: z.string().trim().min(2, { message: "City must be at least 2 characters" }),
+  state: z.string().trim().min(2, { message: "State must be at least 2 characters" }),
+  zipCode: z
+    .string()
+    .trim()
+    .regex(/^\d{6}$/, {
+      message: "ZIP code / Pincode must be exactly 6 digits",
+    }),
+  country: z.string().trim().min(2, { message: "Country must be at least 2 characters" }),
   paymentMethod: z.enum(["cod", "card", "upi"], {
     required_error: "Please select a payment method",
   }),
@@ -31,6 +37,76 @@ const CheckoutForm = ({ onPlaceOrder }) => {
   const { user, addresses = [], getDefaultAddress, cart = [] } = useApp();
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
+  const [detecting, setDetecting] = useState(false);
+
+  const handleDetectLocation = () => {
+    if (!navigator.geolocation) {
+      toast.error("Geolocation is not supported by your browser");
+      return;
+    }
+
+    setDetecting(true);
+    const toastId = toast.loading("Accessing your GPS coordinates...");
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          toast.loading("Fetching location details...", { id: toastId });
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+          );
+          const data = await response.json();
+          
+          if (data && data.address) {
+            const addr = data.address;
+            const pincode = addr.postcode || "";
+            const city = addr.city || addr.town || addr.village || addr.suburb || "";
+            const state = addr.state || "";
+            const country = addr.country || "India";
+            
+            const street = [
+              addr.road,
+              addr.suburb,
+              addr.neighbourhood
+            ].filter(Boolean).join(", ");
+
+            if (street) setValue("address", street);
+            if (city) setValue("city", city);
+            if (state) setValue("state", state);
+            if (pincode) setValue("zipCode", pincode);
+            if (country) setValue("country", country);
+
+            toast.success("Location details pre-filled successfully!", { id: toastId });
+          } else {
+            toast.error("Could not resolve address details. Please fill in manually.", { id: toastId });
+          }
+        } catch (err) {
+          toast.error("Failed to fetch address details. Please fill in manually.", { id: toastId });
+        } finally {
+          setDetecting(false);
+        }
+      },
+      (error) => {
+        setDetecting(false);
+        toast.dismiss(toastId);
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            toast.error("Location permission denied. Please fill details manually.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            toast.error("Location information is unavailable.");
+            break;
+          case error.TIMEOUT:
+            toast.error("Location request timed out.");
+            break;
+          default:
+            toast.error("Failed to detect current location.");
+        }
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
 
   const {
     register,
@@ -74,18 +150,36 @@ const CheckoutForm = ({ onPlaceOrder }) => {
     const defaultAddr = getDefaultAddress ? getDefaultAddress() : (addresses && addresses.find(a => a.isDefault)) || null;
     if (defaultAddr) {
       setSelectedAddressId(defaultAddr.id);
-      setValue("address", defaultAddr.address || "");
+      if (defaultAddr.fullName) {
+        const parts = defaultAddr.fullName.split(" ");
+        setValue("firstName", parts[0] || "");
+        setValue("lastName", parts.slice(1).join(" ") || "");
+      }
+      if (defaultAddr.phone) {
+        setValue("phone", defaultAddr.phone);
+      }
+      const streetAddr = [defaultAddr.houseFlat, defaultAddr.street].filter(Boolean).join(", ");
+      setValue("address", streetAddr || defaultAddr.address || "");
       setValue("city", defaultAddr.city || "");
       setValue("state", defaultAddr.state || "");
-      setValue("zipCode", defaultAddr.zip || "");
+      setValue("zipCode", defaultAddr.pincode || defaultAddr.zip || "");
       setValue("country", defaultAddr.country || "India");
     } else if (addresses.length > 0) {
       const firstAddr = addresses[0];
       setSelectedAddressId(firstAddr.id);
-      setValue("address", firstAddr.address || "");
+      if (firstAddr.fullName) {
+        const parts = firstAddr.fullName.split(" ");
+        setValue("firstName", parts[0] || "");
+        setValue("lastName", parts.slice(1).join(" ") || "");
+      }
+      if (firstAddr.phone) {
+        setValue("phone", firstAddr.phone);
+      }
+      const streetAddr = [firstAddr.houseFlat, firstAddr.street].filter(Boolean).join(", ");
+      setValue("address", streetAddr || firstAddr.address || "");
       setValue("city", firstAddr.city || "");
       setValue("state", firstAddr.state || "");
-      setValue("zipCode", firstAddr.zip || "");
+      setValue("zipCode", firstAddr.pincode || firstAddr.zip || "");
       setValue("country", firstAddr.country || "India");
     } else {
       setSelectedAddressId("new");
@@ -95,6 +189,16 @@ const CheckoutForm = ({ onPlaceOrder }) => {
   const handleSelectAddress = (addr) => {
     if (addr === "new") {
       setSelectedAddressId("new");
+      if (user) {
+        const parts = user.name ? user.name.split(" ") : [];
+        setValue("firstName", parts[0] || "");
+        setValue("lastName", parts.slice(1).join(" ") || "");
+        setValue("phone", user.phone || "");
+      } else {
+        setValue("firstName", "");
+        setValue("lastName", "");
+        setValue("phone", "");
+      }
       setValue("address", "");
       setValue("city", "");
       setValue("state", "");
@@ -102,10 +206,19 @@ const CheckoutForm = ({ onPlaceOrder }) => {
       setValue("country", "India");
     } else {
       setSelectedAddressId(addr.id);
-      setValue("address", addr.address || "");
+      if (addr.fullName) {
+        const parts = addr.fullName.split(" ");
+        setValue("firstName", parts[0] || "");
+        setValue("lastName", parts.slice(1).join(" ") || "");
+      }
+      if (addr.phone) {
+        setValue("phone", addr.phone);
+      }
+      const streetAddr = [addr.houseFlat, addr.street].filter(Boolean).join(", ");
+      setValue("address", streetAddr || addr.address || "");
       setValue("city", addr.city || "");
       setValue("state", addr.state || "");
-      setValue("zipCode", addr.zip || "");
+      setValue("zipCode", addr.pincode || addr.zip || "");
       setValue("country", addr.country || "India");
     }
   };
@@ -233,11 +346,13 @@ const CheckoutForm = ({ onPlaceOrder }) => {
                         type="button"
                       >
                         <div className="address-card-header">
-                          <span className="address-type">{addr.type || "Address"}</span>
+                          <span className="address-type">{addr.addressType || addr.type || "Address"}</span>
                           {addr.isDefault && <span className="default-badge">Default</span>}
                         </div>
-                        <p className="address-name">{addr.name}</p>
-                        <p className="address-text">{addr.address}, {addr.city}</p>
+                        <p className="address-name">{addr.fullName || addr.name}</p>
+                        <p className="address-text">
+                          {[addr.houseFlat, addr.street].filter(Boolean).join(", ") || addr.address}, {addr.city}
+                        </p>
                       </div>
                     ))}
                     <div
@@ -254,7 +369,18 @@ const CheckoutForm = ({ onPlaceOrder }) => {
 
               {/* Address details */}
               <div className="form-group">
-                <label>Address</label>
+                <div className="field-header-row">
+                  <label style={{ marginBottom: 0 }}>Address</label>
+                  <button
+                    type="button"
+                    className="detect-location-btn"
+                    onClick={handleDetectLocation}
+                    disabled={detecting}
+                  >
+                    <MapPin size={12} className={detecting ? "animate-spin-slow" : ""} />
+                    {detecting ? "Detecting..." : "Use Current Location"}
+                  </button>
+                </div>
                 <input
                   type="text"
                   {...register("address")}

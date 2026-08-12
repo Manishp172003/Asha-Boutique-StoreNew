@@ -49,6 +49,24 @@ const Coupons = () => {
       return;
     }
 
+    const val = parseFloat(discountValue);
+    const minAmt = minAmount ? parseFloat(minAmount) : 0.0;
+
+    if (isNaN(val) || val <= 0) {
+      toast.error("Discount value must be a positive number");
+      return;
+    }
+
+    if (discountType === 'PERCENTAGE' && val > 100) {
+      toast.error("Percentage discount cannot exceed 100%");
+      return;
+    }
+
+    if (isNaN(minAmt) || minAmt < 0) {
+      toast.error("Minimum purchase amount cannot be negative");
+      return;
+    }
+
     setSubmitting(true);
     const toastId = toast.loading("Creating coupon...");
     try {

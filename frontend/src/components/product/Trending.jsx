@@ -61,7 +61,7 @@ const Trending = ({ trendingRef, filter, filteredProducts, onFilterChange, onPro
                 </Button>
               </div>
               <h3 className="font-medium text-[#2B1E1A] mb-1">{product.name}</h3>
-              <p className="text-[#7A655D]">{product.price}</p>
+              <p className="text-[#7A655D]">₹{product.price?.toLocaleString('en-IN') || product.price}</p>
             </div>
           ))}
         </div>

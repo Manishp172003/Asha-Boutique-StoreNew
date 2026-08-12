@@ -209,13 +209,24 @@ export const AppProvider = ({ children }) => {
     syncCart()
   }, [user])
 
+  const addEstimatedDeliveryToOrder = (order) => {
+    if (!order) return order;
+    if (order.estimatedDelivery) return order;
+    const date = new Date(order.createdAt);
+    date.setDate(date.getDate() + 5);
+    return {
+      ...order,
+      estimatedDelivery: date.toISOString()
+    };
+  };
+
   // Sync orders with backend when history modal opens or user logs in
   useEffect(() => {
     const fetchOrders = async () => {
       if (user) {
         try {
           const userOrders = await orderService.getUserOrders()
-          setOrders(userOrders)
+          setOrders(userOrders.map(addEstimatedDeliveryToOrder))
         } catch (err) {
           console.error("Orders load failed: ", err)
         }
@@ -374,8 +385,9 @@ export const AppProvider = ({ children }) => {
       })
       
       // Update local context orders
-      setOrders(prev => [order, ...prev])
-      setCurrentOrder(order)
+      const orderWithDelivery = addEstimatedDeliveryToOrder(order)
+      setOrders(prev => [orderWithDelivery, ...prev])
+      setCurrentOrder(orderWithDelivery)
       setCart([])
       setCartOpen(false)
       setAppliedCoupon(null)
@@ -386,6 +398,35 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  // Initialize pending order creation
+  const initializeOrder = async (shippingAddress) => {
+    const formattedAddress = [
+      shippingAddress.fullName || shippingAddress.name,
+      shippingAddress.phone ? `Phone: ${shippingAddress.phone}` : '',
+      shippingAddress.addressLine || shippingAddress.address,
+      shippingAddress.city,
+      shippingAddress.state,
+      shippingAddress.zipCode || shippingAddress.zip,
+      shippingAddress.country || 'India'
+    ].filter(Boolean).join(', ');
+
+    return await orderService.createOrder({
+      shippingAddress: formattedAddress,
+      couponCode: appliedCoupon ? appliedCoupon.code : null
+    });
+  };
+
+  // Finalize order context state adjustments after successful payment
+  const finalizeOrder = (order) => {
+    const orderWithDelivery = addEstimatedDeliveryToOrder(order);
+    setOrders(prev => [orderWithDelivery, ...prev]);
+    setCurrentOrder(orderWithDelivery);
+    setCart([]);
+    setCartOpen(false);
+    setAppliedCoupon(null);
+    setCouponDiscount(0);
+  };
+
   const getUserOrders = () => {
     return orders
   }
@@ -393,7 +434,7 @@ export const AppProvider = ({ children }) => {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       const updatedOrder = await orderService.updateOrderStatus(orderId, newStatus)
-      setOrders(prev => prev.map(order => order.id === updatedOrder.id ? updatedOrder : order))
+      setOrders(prev => prev.map(order => order.id === updatedOrder.id ? addEstimatedDeliveryToOrder(updatedOrder) : order))
       toast.success(`Order status updated to ${newStatus}`)
     } catch (err) {
       toast.error(err.message || 'Failed to update order status')
@@ -568,6 +609,8 @@ export const AppProvider = ({ children }) => {
     removeFromWishlist,
     isWishlisted,
     placeOrder,
+    initializeOrder,
+    finalizeOrder,
     getUserOrders,
     updateOrderStatus,
     handleLogout,

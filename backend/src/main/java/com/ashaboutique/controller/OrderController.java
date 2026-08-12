@@ -58,6 +58,7 @@ public class OrderController {
             OrderResponse order = orderService.createOrder(userDetails.getUsername(), request);
             return ResponseEntity.ok(order);
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
         }
     }

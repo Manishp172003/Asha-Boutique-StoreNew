@@ -49,7 +49,8 @@ export const createOrder = async (orderData) => {
   try {
     // Backend creates order from current user database cart items
     const response = await apiClient.post('/orders', {
-      shippingAddress: orderData.shippingAddress
+      shippingAddress: orderData.shippingAddress,
+      couponCode: orderData.couponCode
     })
     return response.data
   } catch (error) {
