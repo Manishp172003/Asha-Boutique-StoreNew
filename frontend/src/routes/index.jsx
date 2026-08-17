@@ -19,6 +19,7 @@ import OrderDetails from '../pages/OrderDetails'
 import Checkout from '../pages/Checkout'
 import OrderSuccess from '../pages/OrderSuccess'
 import NotFound from '../pages/NotFound'
+import ResetPassword from '../pages/ResetPassword'
 // Admin Pages
 import AdminLogin from '../pages/admin/Login'
 import AdminRoute from '../components/auth/AdminRoute'
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Layout><Login /></Layout>,
+  },
+  {
+    path: '/reset-password',
+    element: <Layout><ResetPassword /></Layout>,
   },
   {
     path: '/dashboard',

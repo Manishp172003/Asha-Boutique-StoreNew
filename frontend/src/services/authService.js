@@ -152,6 +152,35 @@ export const updateProfile = async (userData) => {
   }
 }
 
+/**
+ * Forgot password request
+ * @param {string} email
+ * @returns {Promise<Object>} response data
+ */
+export const forgotPassword = async (email) => {
+  try {
+    const response = await apiClient.post('/auth/forgot-password', { email })
+    return response.data
+  } catch (error) {
+    throw new Error(getErrorMessage(error))
+  }
+}
+
+/**
+ * Reset password request
+ * @param {string} token
+ * @param {string} password
+ * @returns {Promise<Object>} response data
+ */
+export const resetPassword = async (token, password) => {
+  try {
+    const response = await apiClient.post('/auth/reset-password', { token, password })
+    return response.data
+  } catch (error) {
+    throw new Error(getErrorMessage(error))
+  }
+}
+
 export default {
   login,
   register,
@@ -163,4 +192,6 @@ export default {
   getCurrentUser,
   loginWithGoogle,
   updateProfile,
+  forgotPassword,
+  resetPassword,
 }

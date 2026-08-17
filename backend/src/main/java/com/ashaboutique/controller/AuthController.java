@@ -154,4 +154,40 @@ public class AuthController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
+        if (email == null || email.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("message", "Email is required"));
+        }
+        try {
+            String token = authService.generateResetPasswordToken(email);
+            return ResponseEntity.ok(Map.of(
+                "message", "A password reset link has been printed in the console logs (and returned in the response for development ease).",
+                "token", token
+            ));
+        } catch (Exception e) {
+            // We return generic success/error or actual error to help the user test:
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage() != null ? e.getMessage() : "Error generating reset token"));
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> body) {
+        String token = body.get("token");
+        String password = body.get("password");
+        if (token == null || token.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("message", "Reset token is required"));
+        }
+        if (password == null || password.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("message", "New password is required"));
+        }
+        try {
+            authService.resetPassword(token, password);
+            return ResponseEntity.ok(Map.of("message", "Your password has been successfully reset."));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage() != null ? e.getMessage() : "Error resetting password"));
+        }
+    }
 }

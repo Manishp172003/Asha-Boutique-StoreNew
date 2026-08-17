@@ -50,7 +50,7 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
                 // Public endpoints
-                .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/google", "/api/v1/inquiries", "/api/v1/coupons/validate", "/api/v1/coupons/active", "/api/v1/newsletter/subscribe", "/error").permitAll()
+                .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/google", "/api/v1/auth/forgot-password", "/api/v1/auth/reset-password", "/api/v1/inquiries", "/api/v1/coupons/validate", "/api/v1/coupons/active", "/api/v1/newsletter/subscribe", "/error").permitAll()
                 .requestMatchers("/uploads/**", "/images/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/products/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/testimonials/**").permitAll()

@@ -21,6 +21,8 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 import java.util.Collections;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -183,5 +185,37 @@ public class AuthService {
         user.setRole(role);
         User saved = userRepository.save(user);
         return new UserDto(saved.getId(), saved.getName(), saved.getEmail(), saved.getPhone(), saved.getRole(), saved.isBlocked());
+    }
+
+    @Transactional
+    public String generateResetPasswordToken(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+        
+        String token = UUID.randomUUID().toString();
+        user.setResetPasswordToken(token);
+        user.setResetPasswordTokenExpiry(LocalDateTime.now().plusMinutes(15));
+        userRepository.save(user);
+
+        System.out.println("==========================================================================");
+        System.out.println("PASSWORD RESET LINK: http://localhost:5173/reset-password?token=" + token);
+        System.out.println("==========================================================================");
+
+        return token;
+    }
+
+    @Transactional
+    public void resetPassword(String token, String newPassword) {
+        User user = userRepository.findByResetPasswordToken(token)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid or expired password reset token"));
+        
+        if (user.getResetPasswordTokenExpiry().isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("Password reset token has expired");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setResetPasswordToken(null);
+        user.setResetPasswordTokenExpiry(null);
+        userRepository.save(user);
     }
 }
