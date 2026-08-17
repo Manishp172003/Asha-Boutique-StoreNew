@@ -78,6 +78,9 @@ credentials/
 *.pem
 *.key
 *.crt
-
 # Local Secret Configuration Files
-backend/src/main/resources/application.properties
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/bin/
+backend/src/main/resources/static/uploads/*
